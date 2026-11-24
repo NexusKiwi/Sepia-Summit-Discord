@@ -1,0 +1,317 @@
+/**
+ * @name Sepia Summit
+ * @author NexusKiwi
+ * @version 1.0.0
+ * @description Translucent sepia theme to match the Sepia Summit KDE Plasma desktop.
+ * @source https://github.com/NexusKiwi/Sepia-Summit-Discord
+ *
+ * The floating panel and message card layout is adapted from Discord+ by
+ * Paulo Ødegård (MIT): https://github.com/PlusInsta/discord-plus
+ */
+
+/* Edit these to tune the theme. Lower alpha values show more of the wallpaper. */
+:root {
+    --sepia-darkest: 28, 18, 12;
+    --sepia-dark: 42, 28, 18;
+    --sepia-base: 74, 50, 33;
+    --sepia-tan: 196, 160, 116;
+    --sepia-cream: 245, 232, 202;
+
+    --sepia-dim: #b89b7c;
+    --sepia-accent: #c4a074;
+    --sepia-value: #e4cca2;
+    --sepia-text: #f5e8ca;
+    --sepia-warning: #d9822b;
+    --sepia-danger: #c8553d;
+    --sepia-success: #8fa65a;
+
+    --sepia-alpha-window: 0.4;
+    --sepia-alpha-panel: 0.5;
+    --sepia-alpha-chat: 0.28;
+    --sepia-alpha-card: 0.32;
+    --sepia-alpha-popup: 0.97;
+
+    /* Layout */
+    --sepia-gap: 10px;
+    --sepia-radius: 12px;
+
+    /* Fonts, matching the desktop stats panel */
+    --sepia-font-text: "Noto Sans Mono", "Noto Sans", monospace, "Noto Color Emoji";
+    --sepia-font-title: "Noto Serif", Georgia, serif, "Noto Color Emoji";
+    --sepia-font-label: "Noto Sans", sans-serif, "Noto Color Emoji";
+
+    --font-primary: var(--sepia-font-text) !important;
+    --font-display: var(--sepia-font-text) !important;
+    --font-headline: var(--sepia-font-title) !important;
+    --font-code: "Noto Sans Mono", monospace !important;
+}
+
+/* Let the desktop show through the window (needs Vencord's transparency option) */
+html,
+body,
+#app-mount {
+    background: transparent !important;
+}
+
+:root,
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.theme-light,
+.visual-refresh {
+    /* Surfaces */
+    --background-base-lowest: rgba(var(--sepia-darkest), var(--sepia-alpha-window)) !important;
+    --background-base-lower: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+    --background-base-low: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+    --background-surface-high: rgba(var(--sepia-dark), var(--sepia-alpha-chat)) !important;
+    --background-surface-higher: rgba(var(--sepia-dark), var(--sepia-alpha-popup)) !important;
+    --background-surface-highest: rgba(var(--sepia-base), var(--sepia-alpha-popup)) !important;
+    --chat-background-default: rgba(var(--sepia-dark), var(--sepia-alpha-chat)) !important;
+    --background-gradient-chat: transparent !important;
+    --app-frame-background: transparent !important;
+    --modal-background: rgba(var(--sepia-darkest), var(--sepia-alpha-popup)) !important;
+    --card-background-default: rgba(var(--sepia-cream), 0.05) !important;
+    --background-scrim: rgba(var(--sepia-darkest), 0.72) !important;
+
+    /* Hover and selection */
+    --background-mod-subtle: rgba(var(--sepia-tan), 0.1) !important;
+    --background-mod-muted: rgba(var(--sepia-tan), 0.14) !important;
+    --background-mod-normal: rgba(var(--sepia-tan), 0.18) !important;
+    --background-mod-strong: rgba(var(--sepia-tan), 0.26) !important;
+    --interactive-background-hover: rgba(var(--sepia-tan), 0.14) !important;
+    --interactive-background-active: rgba(var(--sepia-tan), 0.2) !important;
+    --interactive-background-selected: rgba(var(--sepia-tan), 0.24) !important;
+    --message-background-hover: rgba(var(--sepia-tan), 0.07) !important;
+
+    /* Text */
+    --text-strong: var(--sepia-text) !important;
+    --text-default: var(--sepia-value) !important;
+    --text-muted: var(--sepia-dim) !important;
+    --text-subtle: var(--sepia-dim) !important;
+    --text-link: var(--sepia-accent) !important;
+    --text-brand: var(--sepia-accent) !important;
+    --text-feedback-critical: var(--sepia-danger) !important;
+    --text-feedback-warning: var(--sepia-warning) !important;
+    --text-feedback-positive: var(--sepia-success) !important;
+    --channels-default: var(--sepia-dim) !important;
+    --channel-icon: var(--sepia-dim) !important;
+    --channel-text-area-placeholder: var(--sepia-dim) !important;
+
+    /* Icons and interactive text */
+    --interactive-text-default: var(--sepia-dim) !important;
+    --interactive-text-hover: var(--sepia-value) !important;
+    --interactive-text-active: var(--sepia-text) !important;
+    --interactive-icon-default: var(--sepia-dim) !important;
+    --interactive-icon-hover: var(--sepia-value) !important;
+    --interactive-icon-active: var(--sepia-text) !important;
+    --icon-strong: var(--sepia-text) !important;
+    --icon-default: var(--sepia-value) !important;
+    --icon-muted: var(--sepia-dim) !important;
+    --icon-subtle: var(--sepia-dim) !important;
+    --icon-brand: var(--sepia-accent) !important;
+    --icon-feedback-critical: var(--sepia-danger) !important;
+    --icon-feedback-warning: var(--sepia-warning) !important;
+    --icon-feedback-positive: var(--sepia-success) !important;
+
+    /* Borders */
+    --border-subtle: rgba(var(--sepia-tan), 0.14) !important;
+    --border-muted: rgba(var(--sepia-tan), 0.18) !important;
+    --border-normal: rgba(var(--sepia-tan), 0.26) !important;
+    --border-strong: rgba(var(--sepia-tan), 0.38) !important;
+    --border-focus: var(--sepia-accent) !important;
+    --app-frame-border: rgba(var(--sepia-tan), 0.14) !important;
+
+    /* Accent: replaces Discord's blurple */
+    --brand-230: #efe2c8 !important;
+    --brand-260: #e9d8b8 !important;
+    --brand-330: #dfc69f !important;
+    --brand-360: #d6b88f !important;
+    --brand-400: #cdac81 !important;
+    --brand-500: #c4a074 !important;
+    --brand-500-hsl: 33 40.5% 61.2% !important;
+    --brand-560: #ad8a5f !important;
+    --brand-600: #967650 !important;
+    --background-brand: var(--sepia-accent) !important;
+    --control-brand-foreground: var(--sepia-accent) !important;
+    --control-primary-background-default: #c4a074 !important;
+    --control-primary-background-hover: #d6b88f !important;
+    --control-primary-background-active: #ad8a5f !important;
+    --control-primary-text-default: #1c120c !important;
+    --control-primary-text-hover: #1c120c !important;
+    --control-primary-text-active: #1c120c !important;
+    --control-secondary-background-default: rgba(var(--sepia-tan), 0.16) !important;
+    --control-secondary-background-hover: rgba(var(--sepia-tan), 0.24) !important;
+    --control-secondary-background-active: rgba(var(--sepia-tan), 0.3) !important;
+    --control-secondary-text-default: var(--sepia-text) !important;
+    --control-secondary-text-hover: var(--sepia-text) !important;
+    --control-secondary-border-default: rgba(var(--sepia-tan), 0.2) !important;
+    --control-secondary-border-hover: rgba(var(--sepia-tan), 0.34) !important;
+
+    /* Inputs */
+    --input-background-default: rgba(var(--sepia-cream), 0.07) !important;
+    --input-border-default: rgba(var(--sepia-tan), 0.2) !important;
+    --input-border-hover: rgba(var(--sepia-tan), 0.34) !important;
+    --input-border-active: var(--sepia-accent) !important;
+    --input-text-default: var(--sepia-text) !important;
+    --input-placeholder-text-default: var(--sepia-dim) !important;
+    --channeltextarea-background: rgba(var(--sepia-cream), 0.07) !important;
+
+    /* Mentions and scrollbars */
+    --mention-background: rgba(var(--sepia-tan), 0.22) !important;
+    --mention-foreground: var(--sepia-text) !important;
+    --scrollbar-thin-thumb: rgba(var(--sepia-tan), 0.4) !important;
+    --scrollbar-thin-track: transparent !important;
+}
+
+/* Fonts ------------------------------------------------------------------ */
+/* Zero specificity and no !important, so custom username fonts still win */
+:where(body, button, input, textarea, [class*="markup_"]) {
+    font-family: var(--sepia-font-text);
+}
+
+#app-mount {
+    text-shadow: 0 1px 2px rgba(var(--sepia-darkest), 0.85);
+}
+
+/* Gradient names have a transparent fill, so a shadow would paint over their colours */
+[class*="dnsFont_"],
+[class*="usernameGradient_"],
+[class*="gradient_"] {
+    text-shadow: none !important;
+}
+
+:is(h1, h2, [class*="title_ybUK"], [class*="sidebarList_"] header):not([class*="dnsFont_"]) {
+    font-family: var(--sepia-font-title) !important;
+    font-weight: 400 !important;
+}
+
+/* Labels in the narrow server rail */
+.vc-ranb-button {
+    padding: 0 2px !important;
+    margin-left: 0 !important;
+    font-family: var(--sepia-font-label) !important;
+    font-size: 10px !important;
+    text-align: center;
+    white-space: nowrap;
+}
+
+[class*="guilds_"] [class*="listItem_"] {
+    font-family: var(--sepia-font-label);
+    white-space: nowrap;
+}
+
+/* Keep one-line labels on one line with the wider font */
+[class*="nameAndDecorators_"],
+[class*="channelName_"],
+[class*="botTag_"],
+[class*="clanTag_"] {
+    white-space: nowrap;
+}
+
+[class*="membersGroup_"],
+[class*="name_yOdhm"] {
+    font-family: var(--sepia-font-label) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase;
+    color: var(--sepia-accent) !important;
+}
+
+/* Floating panels --------------------------------------------------------- */
+[class*="app_"] > [class^="layers_"] {
+    margin: 0 var(--sepia-gap) var(--sepia-gap);
+}
+
+[class*="guilds_"] {
+    margin: 0 var(--sepia-gap) calc(var(--custom-app-panels-height, 0px) + var(--sepia-gap)) 0 !important;
+    padding-top: var(--sepia-gap);
+    border-radius: var(--sepia-radius);
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+}
+
+[class*="sidebarList_"] {
+    margin: 0 var(--sepia-gap) calc(var(--custom-app-panels-height, 0px) + var(--sepia-gap)) 0 !important;
+    border: none !important;
+    border-radius: var(--sepia-radius);
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+}
+
+[class*="panels_"] {
+    left: 0 !important;
+    bottom: 0 !important;
+    width: calc(100% - var(--sepia-gap)) !important;
+    border-radius: var(--sepia-radius) !important;
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+}
+
+[class*="sidebar_"] + main,
+[class*="sidebar_"] + div {
+    border: none !important;
+    border-radius: var(--sepia-radius);
+    overflow: hidden;
+}
+
+[class*="chatContent_"],
+[class*="messagesWrapper_"] {
+    background: transparent !important;
+}
+
+[class*="membersWrap_"] {
+    margin-left: var(--sepia-gap);
+}
+
+[class*="members_"] {
+    border-radius: var(--sepia-radius);
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-panel)) !important;
+}
+
+/* Message cards ----------------------------------------------------------- */
+[class*="messageListItem_"] > [class^="message_"] {
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-card));
+    border-radius: 0;
+}
+
+[class*="messageListItem_"] > [class*="groupStart_"] {
+    margin-top: 0 !important;
+    border-radius: var(--sepia-radius) var(--sepia-radius) 0 0;
+}
+
+[class*="messageListItem_"]:has(> [class*="groupStart_"]) {
+    margin-top: var(--sepia-gap);
+}
+
+[class*="messageListItem_"]:has(+ [class*="messageListItem_"] > [class*="groupStart_"]) > [class^="message_"],
+[class*="messageListItem_"]:has(+ [class*="divider_"]) > [class^="message_"],
+[class*="messageListItem_"]:has(+ [class*="scrollerSpacer_"]) > [class^="message_"] {
+    border-bottom-left-radius: var(--sepia-radius);
+    border-bottom-right-radius: var(--sepia-radius);
+}
+
+[class*="messageListItem_"] > [class^="message_"]:hover {
+    background: rgba(var(--sepia-base), var(--sepia-alpha-card));
+}
+
+/* Compact mode reserves a narrow timestamp column, so widen it for 12-hour times */
+[class*="repliedMessage_"][class*="latin12CompactTimeStamp_"] {
+    --timestamp-width: 3.1rem;
+}
+
+[class*="timestamp_"][class*="latin12CompactTimeStamp_"] {
+    width: 3.1rem !important;
+}
+
+[class*="compact_"] [class*="timestamp_"] {
+    font-family: var(--sepia-font-label) !important;
+    white-space: nowrap;
+}
+
+/* Message box ------------------------------------------------------------- */
+[class*="channelTextArea_"] {
+    border-radius: var(--sepia-radius) !important;
+    background: rgba(var(--sepia-darkest), var(--sepia-alpha-card)) !important;
+}
+
+[class*="scrollableContainer_"] {
+    border-radius: var(--sepia-radius);
+    background: transparent !important;
+}
